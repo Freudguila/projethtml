@@ -1,0 +1,2185 @@
+<!DOCTYPE html>
+<!-- saved from url=(0036)https://git-scm.com/docs/giteveryday -->
+<html lang="fr" class="js fontface translated-ltr"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <script type="text/javascript">
+    
+    const currentTheme = localStorage.getItem("theme")
+    if (currentTheme) {
+      
+      const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)").matches
+      if (prefersDarkScheme === (currentTheme === "dark")) localStorage.removeItem("theme")
+      else if ((prefersDarkScheme && currentTheme === "light")
+        || (!prefersDarkScheme && currentTheme === "dark")) {
+	document.documentElement.dataset.theme = currentTheme
+      }
+    }
+  </script>
+
+  
+  <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Documentation de Git - giteveryday</title>
+
+  <link href="https://git-scm.com/favicon.ico" rel="shortcut icon" type="image/x-icon">
+
+  
+  <link rel="stylesheet" href="./Documentation de Git - giteveryday_files/application.min.9b42ec4699f144e30ba5858c9df6afc16aa9b64fc73c226ee7d8da0e289db4c3.css">
+  <script src="./Documentation de Git - giteveryday_files/modernizr.js"></script>
+  
+
+<link type="text/css" rel="stylesheet" charset="UTF-8" href="./Documentation de Git - giteveryday_files/m=el_main_css"></head>
+
+<body id="documentation">
+
+  <div class="inner">
+    <header>
+  <a id="logo" href="https://git-scm.com/"><img src="./Documentation de Git - giteveryday_files/logo@2x.png" width="110" height="46" alt="Git" class="no-filter"></a>
+  <span id="tagline"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">--contrôle-de-version-rapide</font></font></span>
+  <script type="text/javascript">
+   const taglines = [
+     "fast-version-control",
+     "everything-is-local",
+     "distributed-even-if-your-workflow-isnt",
+     "local-branching-on-the-cheap",
+     "distributed-is-the-new-centralized"
+   ];
+   var tagline = taglines[Math.floor(Math.random() * taglines.length)];
+   document.getElementById('tagline').innerHTML = '--' + tagline;
+  </script>
+
+  
+  <div id="search-container">
+    <form id="search" action="https://git-scm.com/search/results">
+      <input id="search-text" name="search" placeholder="Tapez / pour rechercher sur tout le site…" autocomplete="off" type="text">
+    </form>
+    <div id="search-results"></div>
+  </div>
+  
+  <img src="./Documentation de Git - giteveryday_files/dark-mode.svg" id="dark-mode-button" style="display: block;">
+</header>
+
+  </div> 
+
+  
+    <div class="inner">
+      <div id="content-wrapper">
+        
+<div tabindex="1" class="sidebar-btn"></div>
+<aside class="sidebar" id="sidebar">
+  <nav>
+    <ul>
+      <li>
+        <a href="https://git-scm.com/about"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">À propos</font></font></a>
+        <ul>
+          
+        </ul>
+      </li>
+      <li>
+        <a href="https://git-scm.com/doc" class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Documentation</font></font></a>
+        <ul class="expanded">
+          <li>
+            <a href="https://git-scm.com/docs" class="active"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Référence</font></font></a>
+          </li>
+          <li>
+            <a href="https://git-scm.com/book"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Livre</font></font></a>
+          </li>
+          <li>
+            <a href="https://git-scm.com/videos"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vidéos</font></font></a>
+          </li>
+          <li>
+            <a href="https://git-scm.com/doc/ext"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Liens externes</font></font></a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="https://git-scm.com/downloads"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Téléchargements</font></font></a>
+        <ul>
+          <li>
+            <a href="https://git-scm.com/downloads/guis"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Clients GUI</font></font></a>
+          </li>
+          <li>
+            <a href="https://git-scm.com/downloads/logos"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Logos</font></font></a>
+          </li>
+        </ul>
+      </li>
+      <li>
+        <a href="https://git-scm.com/community"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Communauté</font></font></a>
+      </li>
+    </ul>
+    
+  </nav>
+</aside>
+
+        <div id="content">
+          <div id="reference-version">
+            
+<a class="dropdown-trigger" id="reference-languages-trigger" data-panel-id="l10n-versions-dropdown" href="https://git-scm.com/docs/giteveryday#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Français ▾</font></font></a>
+<div class="dropdown-panel right" id="l10n-versions-dropdown">
+  <header><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Versions localisées de</font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">giteveryday</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">manuel</font></font></header>
+  <ol class="reference-previous-versions">
+    
+    <li>
+      <a href="https://git-scm.com/docs/giteveryday"><span class="version"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Anglais</font></font></span>
+      </a>
+      </li>
+    
+    
+  </ol>
+  <footer><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    Vous souhaitez lire dans votre langue ou corriger des fautes de frappe&nbsp;? </font></font><br> <a href="https://github.com/jnavila/git-manpages-l10n"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vous pouvez contribuer à la traduction de cette page</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> .
+  </font></font></footer>
+</div>
+
+            
+<a class="dropdown-trigger" id="reference-topics-trigger" data-panel-id="topics-dropdown" href="https://git-scm.com/docs/giteveryday#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Sujets ▾</font></font></a>
+<div class="dropdown-panel right" id="topics-dropdown">
+  <div class="three-column">
+    <div class="column-left">
+      
+      
+      
+
+<h3 class="setup"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Installation et configuration</font></font></h3>
+<ul class="unstyled">
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        git
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-config"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        configuration
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-help"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        aide
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-bugreport"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        rapport de bogue
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/doc/credential-helpers"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        Aides aux informations d'identification
+      
+    </font></font></a>
+  </li>
+  
+</ul>
+
+      
+      
+      
+
+<h3 class="projects"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Obtenir et créer des projets</font></font></h3>
+<ul class="unstyled">
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-init"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        init
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-clone"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        cloner
+      
+    </font></font></a>
+  </li>
+  
+</ul>
+
+      
+      
+      
+
+<h3 class="snapshotting"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Instantanés de base</font></font></h3>
+<ul class="unstyled">
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-add"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        ajouter
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-status"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        statut
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-diff"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        diff
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-commit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        commettre
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-notes"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        notes
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-restore"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        restaurer
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-reset"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        réinitialiser
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-rm"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        rm
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-mv"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        mv
+      
+    </font></font></a>
+  </li>
+  
+</ul>
+
+      
+      
+      
+
+<h3 class="branching"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Ramification et fusion</font></font></h3>
+<ul class="unstyled">
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-branch"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        bifurquer
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-checkout"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        vérifier
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-switch"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        changer
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-merge"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        fusionner
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-mergetool"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        outil de fusion
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-log"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        enregistrer
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-stash"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        planque
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-tag"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        étiqueter
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-worktree"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        arbre de travail
+      
+    </font></font></a>
+  </li>
+  
+</ul>
+
+      
+      
+      
+
+<h3 class="sharing"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Partage et mise à jour des projets</font></font></h3>
+<ul class="unstyled">
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-fetch"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        aller chercher
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-pull"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        tirer
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-push"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        pousser
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-remote"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        télécommande
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-submodule"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        sous-module
+      
+    </font></font></a>
+  </li>
+  
+</ul>
+
+      
+    </div>
+    <div class="column-middle">
+      
+      
+      
+
+<h3 class="inspection"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Inspection et comparaison</font></font></h3>
+<ul class="unstyled">
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-show"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        montrer
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-log"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        enregistrer
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-diff"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        diff
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-difftool"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        outil de comparaison
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-range-diff"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        plage-diff
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-shortlog"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        journal court
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-describe"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        décrire
+      
+    </font></font></a>
+  </li>
+  
+</ul>
+
+      
+      
+      
+
+<h3 class="patching"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Patching</font></font></h3>
+<ul class="unstyled">
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-apply"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        appliquer
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-cherry-pick"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        cueillir les cerises
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-diff"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        diff
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-rebase"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        rebasage
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-revert"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        revenir
+      
+    </font></font></a>
+  </li>
+  
+</ul>
+
+      
+      
+      
+
+<h3 class="debugging"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Débogage</font></font></h3>
+<ul class="unstyled">
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-bisect"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        couper en deux
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-blame"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        blâmer
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-grep"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        grep
+      
+    </font></font></a>
+  </li>
+  
+</ul>
+
+      
+      
+      
+
+<h3 class="email"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">E-mail</font></font></h3>
+<ul class="unstyled">
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-am"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        suis
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-apply"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        appliquer
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-format-patch"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        patch de format
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-send-email"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        envoyer un e-mail
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-request-pull"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        requête-pull
+      
+    </font></font></a>
+  </li>
+  
+</ul>
+
+      
+      
+      
+
+<h3 class="external"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Systèmes externes</font></font></h3>
+<ul class="unstyled">
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-svn"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        svn
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-fast-import"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        importation rapide
+      
+    </font></font></a>
+  </li>
+  
+</ul>
+
+      
+      
+      
+
+<h3 class="server-admin"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Administrateur du serveur</font></font></h3>
+<ul class="unstyled">
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-daemon"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        démon
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-update-server-info"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        mise à jour-des-informations-sur-le-serveur
+      
+    </font></font></a>
+  </li>
+  
+</ul>
+
+      
+    </div>
+    <div class="column-right">
+      
+      
+      
+
+<h3 class="guides"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Guides</font></font></h3>
+<ul class="unstyled">
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/gitattributes"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        attributs git
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/gitcli"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        Conventions de l'interface de ligne de commande
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/giteveryday"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        Git au quotidien
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/gitfaq"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        Foire aux questions (FAQ)
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/gitglossary"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        Glossaire
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/githooks"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        Crochets
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/gitignore"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        gitignore
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/gitmodules"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        modules git
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/gitrevisions"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        Révisions
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/gitsubmodules"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        Sous-modules
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/gittutorial"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        Tutoriel
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/gitworkflows"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        Flux de travail
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git#_guides"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        Tous les guides...
+      
+    </font></font></a>
+  </li>
+  
+</ul>
+
+      
+      
+      
+
+<h3 class="admin"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Administration</font></font></h3>
+<ul class="unstyled">
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-clean"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        faire le ménage
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-gc"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        gc
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-fsck"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        fsck
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-reflog"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        reflog
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-filter-branch"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        branche de filtre
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-instaweb"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        instaweb
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-archive"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        archive
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-bundle"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        paquet
+      
+    </font></font></a>
+  </li>
+  
+</ul>
+
+      
+      
+      
+
+<h3 class="plumbing"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Commandes de plomberie</font></font></h3>
+<ul class="unstyled">
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-cat-file"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        fichier chat
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-check-ignore"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        vérifier-ignorer
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-checkout-index"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        index de paiement
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-commit-tree"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        arbre de validation
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-count-objects"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        compter les objets
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-diff-index"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        diff-index
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-for-each-ref"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        pour-chaque-référence
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-hash-object"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        objet de hachage
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-ls-files"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        fichiers ls
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-ls-tree"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        ls-arbre
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-merge-base"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        base de fusion
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-read-tree"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        arbre de lecture
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-rev-list"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        liste de tours
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-rev-parse"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        analyse de révision
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-show-ref"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        show-ref
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-symbolic-ref"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        symbolique-ref
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-update-index"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        index de mise à jour
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-update-ref"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        mise à jour-ref
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-verify-pack"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        vérifier-pack
+      
+    </font></font></a>
+  </li>
+  
+  <li>
+    
+      <a href="https://git-scm.com/docs/git-write-tree"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    
+      
+        arbre d'écriture
+      
+    </font></font></a>
+  </li>
+  
+</ul>
+
+      
+    </div>
+  </div>
+</div>
+
+            
+<a class="dropdown-trigger" id="reference-versions-trigger" data-panel-id="previous-versions-dropdown" href="https://git-scm.com/docs/giteveryday#"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+  
+    Dernière version ▾</font></font></a>
+<span class="light d-flex"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">giteveryday dernière mise à jour en 2.43.0</font></font></span>
+<div class="dropdown-panel left" id="previous-versions-dropdown">
+  <header><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Changements dans le</font></font><strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">giteveryday</font></font></strong><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">manuel</font></font></header>
+  <ol class="reference-previous-versions">
+    
+      
+        <li class="no-change"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2.43.1 → 2.49.0 aucun changement</font></font></span></li>
+      
+    
+      
+        <li>
+        <a href="https://git-scm.com/docs/giteveryday/2.43.0"><span class="version"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2.43.0</font></font></span>
+          <span class="diff">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+            
+              <img src="./Documentation de Git - giteveryday_files/red-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/red-dot.png">
+            
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+          </span>
+          <em class="date"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2023-11-20</font></font></em>
+        </a>
+        </li>
+      
+    
+      
+        <li class="no-change"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2.28.1 → 2.42.4 aucun changement</font></font></span></li>
+      
+    
+      
+        <li>
+        <a href="https://git-scm.com/docs/giteveryday/2.28.0"><span class="version"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2.28.0</font></font></span>
+          <span class="diff">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+            
+              <img src="./Documentation de Git - giteveryday_files/red-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/red-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/red-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/red-dot.png">
+            
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+          </span>
+          <em class="date"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">27/07/2020</font></font></em>
+        </a>
+        </li>
+      
+    
+      
+        <li class="no-change"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2.23.1 → 2.27.1 aucun changement</font></font></span></li>
+      
+    
+      
+        <li>
+        <a href="https://git-scm.com/docs/giteveryday/2.23.0"><span class="version"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2.23.0</font></font></span>
+          <span class="diff">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+            
+              <img src="./Documentation de Git - giteveryday_files/red-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/red-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/red-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/red-dot.png">
+            
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+          </span>
+          <em class="date"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">16/08/2019</font></font></em>
+        </a>
+        </li>
+      
+    
+      
+        <li class="no-change"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2.19.1 → 2.22.5 aucun changement</font></font></span></li>
+      
+    
+      
+        <li>
+        <a href="https://git-scm.com/docs/giteveryday/2.19.0"><span class="version"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2.19.0</font></font></span>
+          <span class="diff">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+            
+              <img src="./Documentation de Git - giteveryday_files/red-dot.png">
+            
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+          </span>
+          <em class="date"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">10/09/2018</font></font></em>
+        </a>
+        </li>
+      
+    
+      
+        <li class="no-change"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2.13.7 → 2.18.5 aucun changement</font></font></span></li>
+      
+    
+      
+        <li>
+        <a href="https://git-scm.com/docs/giteveryday/2.12.5"><span class="version"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2.12.5</font></font></span>
+          <span class="diff">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+            
+              <img src="./Documentation de Git - giteveryday_files/red-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/red-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/red-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/red-dot.png">
+            
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+          </span>
+          <em class="date"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">22/09/2017</font></font></em>
+        </a>
+        </li>
+      
+    
+      
+        <li class="no-change"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2.7.6 → 2.11.4 aucun changement</font></font></span></li>
+      
+    
+      
+        <li>
+        <a href="https://git-scm.com/docs/giteveryday/2.6.7"><span class="version"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2.6.7</font></font></span>
+          <span class="diff">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+            
+              <img src="./Documentation de Git - giteveryday_files/red-dot.png">
+            
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+          </span>
+          <em class="date"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">05/05/2017</font></font></em>
+        </a>
+        </li>
+      
+    
+      
+        <li class="no-change"><span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2.3.10 → 2.5.6 aucun changement</font></font></span></li>
+      
+    
+      
+        <li>
+        <a href="https://git-scm.com/docs/giteveryday/2.2.3"><span class="version"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">2.2.3</font></font></span>
+          <span class="diff">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/green-dot.png">
+            
+            
+              <img src="./Documentation de Git - giteveryday_files/red-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/red-dot.png">
+            
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+              <img src="./Documentation de Git - giteveryday_files/grey-dot.png">
+            
+          </span>
+          <em class="date"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">04/09/2015</font></font></em>
+        </a>
+        </li>
+      
+    
+    <li>&nbsp;</li>
+    
+  </ol>
+  <footer>
+    <p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Vérifiez votre version de git en exécutant</font></font></p>
+    <code class="command">git --version</code>
+  </footer>
+</div>
+
+          </div>
+
+          
+          
+          <div id="main" data-pagefind-filter="category:reference" data-pagefind-meta="category:Reference" data-pagefind-weight="0.05" data-pagefind-body="">
+	    
+            <div class="sect1">
+<h2 id="_name"><a class="anchor" href="https://git-scm.com/docs/giteveryday#_name"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">NOM</font></font></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">giteveryday - Un ensemble minimal de commandes utiles pour Git au quotidien</font></font></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_synopsis"><a class="anchor" href="https://git-scm.com/docs/giteveryday#_synopsis"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">SYNOPSIS</font></font></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Git au quotidien avec environ 20 commandes</font></font></p>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_description"><a class="anchor" href="https://git-scm.com/docs/giteveryday#_description"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">DESCRIPTION</font></font></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Les utilisateurs de Git peuvent être globalement regroupés en quatre catégories afin de décrire ici un petit ensemble de commandes utiles pour Git au quotidien.</font></font></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://git-scm.com/docs/giteveryday#STANDALONE"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Les commandes de développeur individuel (autonomes)</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> sont essentielles pour quiconque s'engage, même pour quelqu'un qui travaille seul.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Si vous travaillez avec d’autres personnes, vous aurez </font><font style="vertical-align: inherit;">également besoin des commandes répertoriées dans la section </font></font><a href="https://git-scm.com/docs/giteveryday#PARTICIPANT"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Développeur individuel (Participant) .</font></font></a><font style="vertical-align: inherit;"></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Les personnes qui jouent le rôle d’ </font></font><a href="https://git-scm.com/docs/giteveryday#INTEGRATOR"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">intégrateur</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> doivent apprendre quelques commandes supplémentaires en plus de celles ci-dessus.</font></font></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/giteveryday#ADMINISTRATION"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Les commandes d'administration du référentiel</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> sont destinées aux administrateurs système responsables de la gestion et de l'alimentation des référentiels Git.</font></font></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_individual_developer_standalone"><a class="anchor" href="https://git-scm.com/docs/giteveryday#_individual_developer_standalone"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Développeur individuel (autonome)</font></font><a id="STANDALONE"></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Un développeur individuel autonome n'échange pas de correctifs avec d'autres personnes et travaille seul dans un seul référentiel, à l'aide des commandes suivantes.</font></font></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://git-scm.com/docs/git-init"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-init[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> pour créer un nouveau référentiel.</font></font></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/git-log"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-log[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> pour voir ce qui s'est passé.</font></font></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/git-switch"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-switch[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> et </font></font><a href="https://git-scm.com/docs/git-branch"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-branch[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> pour changer de branche.</font></font></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/git-add"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-add[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> pour gérer le fichier d'index.</font></font></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/git-diff"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-diff[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> et </font></font><a href="https://git-scm.com/docs/git-status"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-status[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> pour voir ce que vous êtes en train de faire.</font></font></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/git-commit"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-commit[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> pour faire avancer la branche actuelle.</font></font></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/git-restore"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-restore[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> pour annuler les modifications.</font></font></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/git-merge"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-merge[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> pour fusionner entre les branches locales.</font></font></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/git-rebase"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-rebase[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> pour maintenir les branches thématiques.</font></font></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/git-tag"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-tag[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> pour marquer un point connu.</font></font></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_examples"><a class="anchor" href="https://git-scm.com/docs/giteveryday#_examples"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Exemples</font></font></h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="Documentation/giteveryday.txt-Useatarballasastartingpointforanewrepository"> <a class="anchor" href="https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Useatarballasastartingpointforanewrepository"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Utilisez une archive tar comme point de départ pour un nouveau référentiel.</font></font></dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ tar zxf frotz.tar.gz</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ cd frotz</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ git init</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ git add . </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(1)</font></font></b><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ git commit -m "importation de l'arborescence source de frotz."</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ git tag v2.43 </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(2)</font></font></b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">ajouter tout ce qui se trouve sous le répertoire actuel.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">créer une balise légère et non annotée.</font></font></p>
+</li>
+</ol>
+</div>
+</dd>
+<dt class="hdlist1" id="Documentation/giteveryday.txt-Createatopicbranchanddevelop"> <a class="anchor" href="https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Createatopicbranchanddevelop"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Créez une branche thématique et développez-la.</font></font></dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ git switch -c alsa-audio </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(1)</font></font></b><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ éditer/compiler/tester</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ git restore curses/ux_audio_oss.c </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(2)</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+$ git add curses/ux_audio_alsa.c </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(3)</font></font></b><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ éditer/compiler/tester</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ git diff HEAD </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(4)</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+$ git commit -a -s </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(5)</font></font></b><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ éditer/compiler/tester</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ git diff HEAD^ </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(6)</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+$ git commit -a --amend </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(7)</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+$ git switch master </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(8)</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+$ git merge alsa-audio </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(9)</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+$ git log --since='il y a 3 jours' </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(10)</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+$ git log v2.43.. curses/ </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(11)</font></font></b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">créer une nouvelle branche de sujet.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">annulez vos modifications bâclées dans </font></font><code>curses/ux_audio_oss.c</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vous devez indiquer à Git si vous avez ajouté un nouveau fichier&nbsp;; la suppression et la modification seront détectées si vous le faites </font></font><code>git commit -a</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">plus tard.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">pour voir quels changements vous apportez.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">engagez tout, comme vous l'avez testé, avec votre signature.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">regardez tous vos changements, y compris le commit précédent.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">modifiez le commit précédent, en ajoutant toutes vos nouvelles modifications, en utilisant votre message d'origine.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">passer à la branche principale.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">fusionner une branche de sujet dans votre branche principale.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">examiner les journaux de validation&nbsp;; d'autres formes de limitation de sortie peuvent être combinées et inclure </font></font><code>-10</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(pour afficher jusqu'à 10 validations)
+ </font></font><code>--until=2005-12-10</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, etc.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">afficher uniquement les modifications qui touchent ce qui se trouve dans </font></font><code>curses/</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+le répertoire, depuis </font></font><code>v2.43</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">la balise.</font></font></p>
+</li>
+</ol>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_individual_developer_participant"><a class="anchor" href="https://git-scm.com/docs/giteveryday#_individual_developer_participant"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Développeur individuel (Participant)</font></font><a id="PARTICIPANT"></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Un développeur travaillant en tant que participant à un projet de groupe doit apprendre à communiquer avec les autres et utilise ces commandes en plus de celles dont un développeur autonome a besoin.</font></font></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://git-scm.com/docs/git-clone"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-clone[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> depuis l'amont pour amorcer votre référentiel local.</font></font></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/git-pull"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-pull[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> et </font></font><a href="https://git-scm.com/docs/git-fetch"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-fetch[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> depuis «&nbsp;origin&nbsp;» pour rester à jour avec l'amont.</font></font></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/git-push"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-push[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> vers un référentiel partagé, si vous adoptez le flux de travail du référentiel partagé de style CVS.</font></font></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/git-format-patch"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-format-patch[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> pour préparer la soumission par e-mail, si vous adoptez le flux de travail du forum public de style noyau Linux.</font></font></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/git-send-email"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-send-email[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> pour envoyer votre soumission par e-mail sans corruption par votre MUA.</font></font></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/git-request-pull"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-request-pull[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> pour créer un résumé des modifications que votre amont doit extraire.</font></font></p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_examples_2"><a class="anchor" href="https://git-scm.com/docs/giteveryday#_examples_2"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Exemples</font></font></h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="Documentation/giteveryday.txt-ClonetheupstreamandworkonitFeedchangestoupstream"> <a class="anchor" href="https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-ClonetheupstreamandworkonitFeedchangestoupstream"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Clonez l'amont et travaillez dessus. Transmettez les modifications à l'amont.</font></font></dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ git clone git://git.kernel.org/pub/scm/.../torvalds/linux-2.6 my2.6</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ cd my2.6</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ git switch -c mine master </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(1)</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+$ edit/compile/test; git commit -a -s </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(2)</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+$ git format-patch master </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(3)</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+$ git send-email --to="personne &lt;email@exemple.com&gt;" 00*.patch </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(4)</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+$ git switch master </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(5)</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+$ git pull </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(6)</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+$ git log -p ORIG_HEAD.. arch/i386 include/asm-i386 </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(7)</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+$ git ls-remote --heads http://git.kernel.org/.../jgarzik/libata-dev.git </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(8)</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+$ git pull git://git.kernel.org/pub/.../jgarzik/libata-dev.git ALL </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(9)</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+$ git reset --hard ORIG_HEAD </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(10)</font></font></b><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+$ git gc </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(11)</font></font></b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">extraire une nouvelle branche </font></font><code>mine</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">de master.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">répéter si nécessaire.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">extraire les correctifs de votre branche, par rapport au maître,</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">et envoyez-leur un e-mail.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">retour à </font></font><code>master</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">, prêt à voir les nouveautés</font></font></p>
+</li>
+<li>
+<p><code>git pull</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">récupère </font></font><code>origin</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">par défaut et fusionne dans la branche actuelle.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">immédiatement après avoir tiré, regardez les changements effectués en amont depuis la dernière fois que nous avons vérifié, uniquement dans la zone qui nous intéresse.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">vérifiez les noms des branches dans un référentiel externe (si non connus).</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">récupérer à partir d'une branche spécifique </font></font><code>ALL</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">d'un référentiel spécifique et le fusionner.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">inverser la traction.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">les déchets collectent les objets restants de l'extraction inversée.</font></font></p>
+</li>
+</ol>
+</div>
+</dd>
+<dt class="hdlist1" id="Documentation/giteveryday.txt-Pushintoanotherrepository"> <a class="anchor" href="https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Pushintoanotherrepository"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Pousser vers un autre référentiel.</font></font></dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">satellite$ git clone mothership:frotz frotz </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(1)</font></font></b><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+satellite$ cd frotz</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+satellite$ git config --get-regexp '^(remote|branch)\.' </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(2)</font></font></b><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+remote.origin.url vaisseau-mère :frotz</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+remote.origin.fetch refs/heads/*:refs/remotes/origin/*</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+branche.maître.origine distante</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+branche.master.merge refs/heads/master</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+satellite$ git config remote.origin.push \</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+	   +refs/heads/*:refs/remotes/satellite/* </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(3)</font></font></b><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+satellite$ éditer/compiler/tester/valider</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+satellite$ git push origin </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(4)</font></font></b><font></font>
+<font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+vaisseau-mère$ cd frotz</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+vaisseau-mère$ git switch master</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+vaisseau-mère$ git merge satellite/master </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(5)</font></font></b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La machine mère possède un référentiel frotz sous votre répertoire personnel&nbsp;; clonez-le pour démarrer un référentiel sur la machine satellite.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Le clone définit ces variables de configuration par défaut. Il </font></font><code>git pull</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">récupère et stocke les branches de la machine mère dans </font></font><code>remotes/origin/*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">des branches locales de suivi à distance.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">organiser </font></font><code>git push</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">le déplacement de toutes les branches locales vers leur branche correspondante de la machine mère.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">La commande push stockera tout notre travail sur </font></font><code>remotes/satellite/*</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+des branches de suivi à distance de la machine mère. Vous pouvez utiliser cette méthode comme méthode de secours. De même, vous pouvez faire comme si la machine mère avait récupéré les données (utile lorsque l'accès est unilatéral).</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">sur la machine mère, fusionnez le travail effectué sur la machine satellite dans la branche principale.</font></font></p>
+</li>
+</ol>
+</div>
+</dd>
+<dt class="hdlist1" id="Documentation/giteveryday.txt-Branchoffofaspecifictag"> <a class="anchor" href="https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Branchoffofaspecifictag"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Branche à partir d'une balise spécifique.</font></font></dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">$ git switch -c private2.6.14 v2.6.14 </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(1)</font></font></b><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ edit/compile/test; git commit -a</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ git checkout master</font></font><font></font><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+$ git cherry-pick v2.6.14..private2.6.14 </font></font><b class="conum"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">(2)</font></font></b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">créer une branche privée basée sur une balise bien connue (mais quelque peu en retard).</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Transférer toutes les modifications d' </font></font><code>private2.6.14</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">une branche à </font></font><code>master</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">l'autre sans fusion formelle. Ou écriture manuscrite</font></font><br>
+<code>git format-patch -k -m --stdout v2.6.14..private2.6.14 |
+  git am -3 -k</code></p>
+</li>
+</ol>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Un autre mécanisme de soumission des participants consiste à utiliser les
+ </font></font><code>git request-pull</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">mécanismes de demande d'extraction (par exemple, tels qu'utilisés sur GitHub (www.github.com) pour informer votre amont de votre contribution.</font></font></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_integrator"><a class="anchor" href="https://git-scm.com/docs/giteveryday#_integrator"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Intégrateur</font></font><a id="INTEGRATOR"></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Une personne assez centrale agissant comme intégrateur dans un projet de groupe reçoit les modifications apportées par d'autres, les examine et les intègre et publie le résultat pour que d'autres puissent l'utiliser, en utilisant ces commandes en plus de celles dont les participants ont besoin.</font></font></p>
+</div>
+<div class="paragraph">
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Cette section peut également être utilisée par ceux qui répondent à </font></font><code>git
+request-pull</code><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">une demande d'extraction sur GitHub (www.github.com) afin d'intégrer le travail d'autres personnes à leur historique. Un sous-lieutenant de zone pour un dépôt agira à la fois comme participant et comme intégrateur.</font></font></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://git-scm.com/docs/git-am"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-am[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> pour appliquer les correctifs envoyés par courrier électronique par vos contributeurs.</font></font></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/git-pull"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-pull[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> pour fusionner à partir de vos lieutenants de confiance.</font></font></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/git-format-patch"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-format-patch[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> pour préparer et envoyer des alternatives suggérées aux contributeurs.</font></font></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/git-revert"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git-revert[1]</font></font></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> pour annuler les commits ratés.</font></font></p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/git-push">git-push[1]</a> to publish the bleeding edge.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_examples_3"><a class="anchor" href="https://git-scm.com/docs/giteveryday#_examples_3"></a>Examples</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="Documentation/giteveryday.txt-Atypicalintegrator8217sGitday"> <a class="anchor" href="https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Atypicalintegrator8217sGitday"></a>A typical integrator’s Git day. </dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre>$ git status <b class="conum">(1)</b>
+$ git branch --no-merged master <b class="conum">(2)</b>
+$ mailx <b class="conum">(3)</b><font></font>
+&amp; s 2 3 4 5 ./+to-apply<font></font>
+&amp; s 7 8 ./+hold-linus<font></font>
+&amp; q<font></font>
+$ git switch -c topic/one master<font></font>
+$ git am -3 -i -s ./+to-apply <b class="conum">(4)</b><font></font>
+$ compile/test<font></font>
+$ git switch -c hold/linus &amp;&amp; git am -3 -i -s ./+hold-linus <b class="conum">(5)</b>
+$ git switch topic/one &amp;&amp; git rebase master <b class="conum">(6)</b>
+$ git switch -C seen next <b class="conum">(7)</b>
+$ git merge topic/one topic/two &amp;&amp; git merge hold/linus <b class="conum">(8)</b><font></font>
+$ git switch maint<font></font>
+$ git cherry-pick master~4 <b class="conum">(9)</b><font></font>
+$ compile/test<font></font>
+$ git tag -s -m "GIT 0.99.9x" v0.99.9x <b class="conum">(10)</b>
+$ git fetch ko &amp;&amp; for branch in master maint next seen <b class="conum">(11)</b><font></font>
+    do<font></font>
+	git show-branch ko/$branch $branch <b class="conum">(12)</b><font></font>
+    done<font></font>
+$ git push --follow-tags ko <b class="conum">(13)</b></pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>see what you were in the middle of doing, if anything.</p>
+</li>
+<li>
+<p>see which branches haven’t been merged into <code>master</code> yet.
+Likewise for any other integration branches e.g. <code>maint</code>, <code>next</code>
+and <code>seen</code>.</p>
+</li>
+<li>
+<p>read mails, save ones that are applicable, and save others
+that are not quite ready (other mail readers are available).</p>
+</li>
+<li>
+<p>apply them, interactively, with your sign-offs.</p>
+</li>
+<li>
+<p>create topic branch as needed and apply, again with sign-offs.</p>
+</li>
+<li>
+<p>rebase internal topic branch that has not been merged to the
+master or exposed as a part of a stable branch.</p>
+</li>
+<li>
+<p>restart <code>seen</code> every time from the next.</p>
+</li>
+<li>
+<p>and bundle topic branches still cooking.</p>
+</li>
+<li>
+<p>backport a critical fix.</p>
+</li>
+<li>
+<p>create a signed tag.</p>
+</li>
+<li>
+<p>make sure master was not accidentally rewound beyond that
+already pushed out.</p>
+</li>
+<li>
+<p>In the output from <code>git show-branch</code>, <code>master</code> should have
+everything <code>ko/master</code> has, and <code>next</code> should have
+everything <code>ko/next</code> has, etc.</p>
+</li>
+<li>
+<p>push out the bleeding edge, together with new tags that point
+into the pushed history.</p>
+</li>
+</ol>
+</div>
+</dd>
+</dl>
+</div>
+<div class="paragraph">
+<p>In this example, the <code>ko</code> shorthand points at the Git maintainer’s
+repository at kernel.org, and looks like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre>(in .git/config)<font></font>
+[remote "ko"]<font></font>
+	url = kernel.org:/pub/scm/git/git.git<font></font>
+	fetch = refs/heads/*:refs/remotes/ko/*<font></font>
+	push = refs/heads/master<font></font>
+	push = refs/heads/next<font></font>
+	push = +refs/heads/seen<font></font>
+	push = refs/heads/maint</pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_repository_administration"><a class="anchor" href="https://git-scm.com/docs/giteveryday#_repository_administration"></a>Repository Administration<a id="ADMINISTRATION"></a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>A repository administrator uses the following tools to set up
+and maintain access to the repository by developers.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><a href="https://git-scm.com/docs/git-daemon">git-daemon[1]</a> to allow anonymous download from
+repository.</p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/git-shell">git-shell[1]</a> can be used as a <em>restricted login shell</em>
+for shared central repository users.</p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/git-http-backend">git-http-backend[1]</a> provides a server side implementation
+of Git-over-HTTP ("Smart http") allowing both fetch and push services.</p>
+</li>
+<li>
+<p><a href="https://git-scm.com/docs/gitweb">gitweb[1]</a> provides a web front-end to Git repositories,
+which can be set-up using the <a href="https://git-scm.com/docs/git-instaweb">git-instaweb[1]</a> script.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p><a href="https://git-scm.com/docs/howto/update-hook-example">update hook howto</a> has a good
+example of managing a shared central repository.</p>
+</div>
+<div class="paragraph">
+<p>In addition there are a number of other widely deployed hosting, browsing
+and reviewing solutions such as:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>gitolite, gerrit code review, cgit and others.</p>
+</li>
+</ul>
+</div>
+<div class="sect2">
+<h3 id="_examples_4"><a class="anchor" href="https://git-scm.com/docs/giteveryday#_examples_4"></a>Examples</h3>
+<div class="dlist">
+<dl>
+<dt class="hdlist1" id="Documentation/giteveryday.txt-Weassumethefollowinginetcservices"> <a class="anchor" href="https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Weassumethefollowinginetcservices"></a>We assume the following in /etc/services </dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre>$ grep 9418 /etc/services<font></font>
+git		9418/tcp		# Git Version Control System</pre>
+</div>
+</div>
+</dd>
+<dt class="hdlist1" id="Documentation/giteveryday.txt-Rungit-daemontoservepubscmfrominetd"> <a class="anchor" href="https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Rungit-daemontoservepubscmfrominetd"></a>Run git-daemon to serve /pub/scm from inetd. </dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre>$ grep git /etc/inetd.conf<font></font>
+git	stream	tcp	nowait	nobody \<font></font>
+  /usr/bin/git-daemon git-daemon --inetd --export-all /pub/scm</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The actual configuration line should be on one line.</p>
+</div>
+</dd>
+<dt class="hdlist1" id="Documentation/giteveryday.txt-Rungit-daemontoservepubscmfromxinetd"> <a class="anchor" href="https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Rungit-daemontoservepubscmfromxinetd"></a>Run git-daemon to serve /pub/scm from xinetd. </dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre>$ cat /etc/xinetd.d/git-daemon<font></font>
+# default: off<font></font>
+# description: The Git server offers access to Git repositories<font></font>
+service git<font></font>
+{<font></font>
+	disable = no<font></font>
+	type            = UNLISTED<font></font>
+	port            = 9418<font></font>
+	socket_type     = stream<font></font>
+	wait            = no<font></font>
+	user            = nobody<font></font>
+	server          = /usr/bin/git-daemon<font></font>
+	server_args     = --inetd --export-all --base-path=/pub/scm<font></font>
+	log_on_failure  += USERID<font></font>
+}</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Check your xinetd(8) documentation and setup, this is from a Fedora system.
+Others might be different.</p>
+</div>
+</dd>
+<dt class="hdlist1" id="Documentation/giteveryday.txt-Givepushpullonlyaccesstodevelopersusinggit-over-ssh"> <a class="anchor" href="https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-Givepushpullonlyaccesstodevelopersusinggit-over-ssh"></a>Give push/pull only access to developers using git-over-ssh. </dt>
+<dd>
+<p>e.g. those using:
+<code>$ git push/pull ssh://host.xz/pub/scm/project</code></p>
+<div class="listingblock">
+<div class="content">
+<pre>$ grep git /etc/passwd <b class="conum">(1)</b><font></font>
+alice:x:1000:1000::/home/alice:/usr/bin/git-shell<font></font>
+bob:x:1001:1001::/home/bob:/usr/bin/git-shell<font></font>
+cindy:x:1002:1002::/home/cindy:/usr/bin/git-shell<font></font>
+david:x:1003:1003::/home/david:/usr/bin/git-shell<font></font>
+$ grep git /etc/shells <b class="conum">(2)</b>
+/usr/bin/git-shell</pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>log-in shell is set to /usr/bin/git-shell, which does not
+allow anything but <code>git push</code> and <code>git pull</code>.  The users require
+ssh access to the machine.</p>
+</li>
+<li>
+<p>in many distributions /etc/shells needs to list what is used
+as the login shell.</p>
+</li>
+</ol>
+</div>
+</dd>
+<dt class="hdlist1" id="Documentation/giteveryday.txt-CVS-stylesharedrepository"> <a class="anchor" href="https://git-scm.com/docs/giteveryday#Documentation/giteveryday.txt-CVS-stylesharedrepository"></a>CVS-style shared repository. </dt>
+<dd>
+<div class="listingblock">
+<div class="content">
+<pre>$ grep git /etc/group <b class="conum">(1)</b><font></font>
+git:x:9418:alice,bob,cindy,david<font></font>
+$ cd /home/devo.git<font></font>
+$ ls -l <b class="conum">(2)</b><font></font>
+  lrwxrwxrwx   1 david git    17 Dec  4 22:40 HEAD -&gt; refs/heads/master<font></font>
+  drwxrwsr-x   2 david git  4096 Dec  4 22:40 branches<font></font>
+  -rw-rw-r--   1 david git    84 Dec  4 22:40 config<font></font>
+  -rw-rw-r--   1 david git    58 Dec  4 22:40 description<font></font>
+  drwxrwsr-x   2 david git  4096 Dec  4 22:40 hooks<font></font>
+  -rw-rw-r--   1 david git 37504 Dec  4 22:40 index<font></font>
+  drwxrwsr-x   2 david git  4096 Dec  4 22:40 info<font></font>
+  drwxrwsr-x   4 david git  4096 Dec  4 22:40 objects<font></font>
+  drwxrwsr-x   4 david git  4096 Nov  7 14:58 refs<font></font>
+  drwxrwsr-x   2 david git  4096 Dec  4 22:40 remotes<font></font>
+$ ls -l hooks/update <b class="conum">(3)</b><font></font>
+  -r-xr-xr-x   1 david git  3536 Dec  4 22:40 update<font></font>
+$ cat info/allowed-users <b class="conum">(4)</b><font></font>
+refs/heads/master	alice\|cindy<font></font>
+refs/heads/doc-update	bob<font></font>
+refs/tags/v[0-9]*	david</pre>
+</div>
+</div>
+<div class="colist arabic">
+<ol>
+<li>
+<p>place the developers into the same git group.</p>
+</li>
+<li>
+<p>and make the shared repository writable by the group.</p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">utilisez l'exemple update-hook de Carl de Documentation/howto/ pour le contrôle de la politique de branche.</font></font></p>
+</li>
+<li>
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Alice et Cindy peuvent pousser dans Master, seul Bob peut pousser dans Doc-Update. David est le responsable des versions et est la seule personne qui peut créer et pousser des balises de version.</font></font></p>
+</li>
+</ol>
+</div>
+</dd>
+</dl>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_git"><a class="anchor" href="https://git-scm.com/docs/giteveryday#_git"></a><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">GIT</font></font></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Une partie de la </font><font style="vertical-align: inherit;">suite </font></font><a href="https://git-scm.com/docs/git"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">git[1]</font></font></a><font style="vertical-align: inherit;"></font></p>
+</div>
+</div>
+</div>
+            
+            
+              
+              
+              
+              <h3 hidden="true" data-pagefind-weight="10"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">giteveryday</font></font></h3>
+            
+          </div>
+        </div>
+      </div>
+      <footer>
+  <div class="site-source">
+    <a href="https://git-scm.com/site"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">À propos de ce site</font></font></a><br><font style="vertical-align: inherit;"><font style="vertical-align: inherit;"> 
+    Les correctifs, suggestions et commentaires sont les bienvenus.
+  </font></font></div>
+  <div class="sfc-member"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">
+    Git est membre du </font></font><a href="https://git-scm.com/sfc"><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">Software Freedom Conservancy</font></font></a>
+  </div>
+</footer>
+<a href="https://git-scm.com/docs/giteveryday#top" class="scrollToTop" id="scrollToTop" data-label="Scroll to top" style="display: inline;">
+  <img src="./Documentation de Git - giteveryday_files/chevron-up@2x.png" width="20" height="20" alt="faire défiler vers le haut">
+</a>
+
+<script src="./Documentation de Git - giteveryday_files/jquery-1.7.1.min.js"></script>
+<script src="./Documentation de Git - giteveryday_files/jquery-ui-1.8.18.custom.min.js"></script>
+<script src="./Documentation de Git - giteveryday_files/jquery.defaultvalue.js"></script>
+<script src="./Documentation de Git - giteveryday_files/session.min.js"></script>
+
+<script src="./Documentation de Git - giteveryday_files/application.min.837dd7f87a35b5db4d6075dcbd5b3802554557128ab2eace2d39c2dbbfc36d88.js"></script>
+
+    </div><div id="goog-gt-tt" class="VIpgJd-yAWNEb-L7lbkb skiptranslate" style="border-radius: 12px; margin: 0 0 0 -23px; padding: 0; font-family: &#39;Google Sans&#39;, Arial, sans-serif;" data-id=""><div id="goog-gt-vt" class="VIpgJd-yAWNEb-hvhgNd"><div class=" VIpgJd-yAWNEb-hvhgNd-l4eHX-i3jM8c"><img src="./Documentation de Git - giteveryday_files/24px.svg" width="24" height="24" alt=""></div><div class=" VIpgJd-yAWNEb-hvhgNd-k77Iif-i3jM8c"><div class="VIpgJd-yAWNEb-hvhgNd-IuizWc" dir="ltr">Texte d'origine</div><div id="goog-gt-original-text" class="VIpgJd-yAWNEb-nVMfcd-fmcmS VIpgJd-yAWNEb-hvhgNd-axAV1"></div></div><div class="VIpgJd-yAWNEb-hvhgNd-N7Eqid ltr"><div class="VIpgJd-yAWNEb-hvhgNd-N7Eqid-B7I4Od ltr" dir="ltr"><div class="VIpgJd-yAWNEb-hvhgNd-UTujCb">Évaluez cette traduction</div><div class="VIpgJd-yAWNEb-hvhgNd-eO9mKe">Votre avis nous aidera à améliorer Google&nbsp;Traduction</div></div><div class="VIpgJd-yAWNEb-hvhgNd-xgov5 ltr"><button id="goog-gt-thumbUpButton" type="button" class="VIpgJd-yAWNEb-hvhgNd-bgm6sf" title="Bonne traduction" aria-label="Bonne traduction" aria-pressed="false"><span id="goog-gt-thumbUpIcon"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M21 7h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 0S7.08 6.85 7 7H2v13h16c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73V9c0-1.1-.9-2-2-2zM7 18H4V9h3v9zm14-7l-3 7H9V8l4.34-4.34L12 9h9v2z"></path></svg></span><span id="goog-gt-thumbUpIconFilled"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M21 7h-6.31l.95-4.57.03-.32c0-.41-.17-.79-.44-1.06L14.17 0S7.08 6.85 7 7v13h11c.83 0 1.54-.5 1.84-1.22l3.02-7.05c.09-.23.14-.47.14-.73V9c0-1.1-.9-2-2-2zM5 7H1v13h4V7z"></path></svg></span></button><button id="goog-gt-thumbDownButton" type="button" class="VIpgJd-yAWNEb-hvhgNd-bgm6sf" title="Mauvaise traduction" aria-label="Mauvaise traduction" aria-pressed="false"><span id="goog-gt-thumbDownIcon"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M3 17h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 24s7.09-6.85 7.17-7h5V4H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2zM17 6h3v9h-3V6zM3 13l3-7h9v10l-4.34 4.34L12 15H3v-2z"></path></svg></span><span id="goog-gt-thumbDownIconFilled"><svg width="24" height="24" viewBox="0 0 24 24" focusable="false" class="VIpgJd-yAWNEb-hvhgNd-THI6Vb NMm5M"><path d="M3 17h6.31l-.95 4.57-.03.32c0 .41.17.79.44 1.06L9.83 24s7.09-6.85 7.17-7V4H6c-.83 0-1.54.5-1.84 1.22l-3.02 7.05c-.09.23-.14.47-.14.73v2c0 1.1.9 2 2 2zm16 0h4V4h-4v13z"></path></svg></span></button></div></div><div id="goog-gt-votingHiddenPane" class="VIpgJd-yAWNEb-hvhgNd-aXYTce"><form id="goog-gt-votingForm" action="https://translate.googleapis.com/translate_voting?client=te_lib" method="post" target="votingFrame" class="VIpgJd-yAWNEb-hvhgNd-aXYTce"><input type="text" name="sl" id="goog-gt-votingInputSrcLang"><input type="text" name="tl" id="goog-gt-votingInputTrgLang"><input type="text" name="query" id="goog-gt-votingInputSrcText"><input type="text" name="gtrans" id="goog-gt-votingInputTrgText"><input type="text" name="vote" id="goog-gt-votingInputVote"></form><iframe name="votingFrame" frameborder="0" src="./Documentation de Git - giteveryday_files/saved_resource.html"></iframe></div></div></div>
+  
+
+
+
+
+</body></html>
